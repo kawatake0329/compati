@@ -1,0 +1,62 @@
+<header class="mb-5">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container">
+      <% if master_signed_in? %>
+        <%= link_to "nagano_cake", master_root_path, class: "" %>
+      <% else %>
+        <%= link_to "nagano_cake", root_path, class: "" %>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if master_signed_in? %>
+          <li>
+            <%= link_to "商品一覧", master_products_path, class: '' %>
+          </li>
+          <li>
+            <%=  link_to "ユーザー", master_users_path, class: '' %>
+          </li>
+          <li>
+            <%=  link_to "注文履歴一覧", master_root_path, class: '' %>
+          </li>
+          <li>
+            <%= link_to "ジャンル一覧", master_genres_path, class: '' %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_master_session_path, method: :delete, class: '' %>
+          </li>
+        <% elsif customer_signed_in? %>
+          <div class="d-flex align-products-center text-white">ようこそ、<%= current_customer.first_name_kana %>さん！</div>
+          <li>
+            <%= link_to "マイページ", customer_current_customer_mypage_path(current_customer), class: '' %>
+          </li>
+          <li>
+            <%= link_to "商品一覧", customer_products_path, class: '' %>
+          </li>
+          <li>
+            <%= link_to "カート", customer_shopping_carts_path, class: '' %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: '' %>
+          </li>
+        <% else %>
+           <li>
+            <%= link_to "About", customer_home_about_path, class: '' %>
+          </li>
+          <li>
+            <%= link_to "商品一覧", customer_products_path, class: '' %>
+          </li>
+          <li>
+            <%= link_to "新規登録", new_customer_registration_path, class: '' %>
+          </li>
+          <li>
+            <%= link_to "ログイン", new_customer_session_path, class: '' %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

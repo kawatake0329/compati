@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :public do
     resources :posts, only: [:index, :show, :new, :create, :edit, :update]
     get "customer/mypage"=>"customers#show"
-    resource :customers, only: [:edit, :update]
+    resources :customers, only: [:index, :edit, :update]
   end
 
   namespace :master do
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     sessions: 'public/sessions',
     passwords: 'public/passwords'
   }
-  devise_scope :user do
+  devise_scope :customer do
     post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

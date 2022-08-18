@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_14_092405) do
+ActiveRecord::Schema.define(version: 2022_08_18_040715) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -49,8 +49,15 @@ ActiveRecord::Schema.define(version: 2022_08_14_092405) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "deleted_user", default: true, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "grades", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "masters", force: :cascade do |t|
@@ -63,6 +70,33 @@ ActiveRecord::Schema.define(version: 2022_08_14_092405) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_masters_on_email", unique: true
     t.index ["reset_password_token"], name: "index_masters_on_reset_password_token", unique: true
+  end
+
+  create_table "post_comments", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "customer_id", null: false
+    t.float "rate", default: 0.0, null: false
+    t.text "comment", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "grade_id", null: false
+    t.text "mother_board"
+    t.text "cpu", null: false
+    t.text "memory", null: false
+    t.text "storage", null: false
+    t.text "graphic_board", null: false
+    t.text "case"
+    t.text "case_fan"
+    t.text "power"
+    t.text "compatibility"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

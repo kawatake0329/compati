@@ -1,0 +1,55 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  		<h1>新しい投稿</h1>
+  		<%= form_with model:@post, url: public_posts_path, method: :post, local:true do |f| %>
+  		  <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: 'form-control book_title' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :grade_id %>
+          <%= f.select :grade_id, Grade.grade_statuses.keys.to_a %>
+        </div>
+        <div class="form-group">
+          <%= f.label :mother_board %>
+          <%= f.text_area :mother_board, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :cpu %>
+          <%= f.text_area :cpu, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :memory %>
+          <%= f.text_area :memory, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :storage %>
+          <%= f.text_area :storage, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :graphic_board %>
+          <%= f.text_area :graphic_board, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :case %>
+          <%= f.text_area :case, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :power %>
+          <%= f.text_area :power, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :compatibility %>
+          <%= f.text_area :compatibility, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: 'btn btn-success' %>
+        </div>
+  		<% end %>
+  </div>
+</div>

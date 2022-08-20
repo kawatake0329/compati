@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "public/home/about"=>"public/homes#about"
 
   namespace :public do
-    resources :posts, only: [:index, :show, :new, :create, :edit, :update] do
+    resources :posts, only: [:new, :show, :index, :create, :edit, :update] do
       resources :post_comments, only: [:create, :destroy]
     end
     get "customer/mypage"=>"customers#show"

@@ -4,13 +4,15 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :posts, dependent: :destroy
+
   def self.guest
     find_or_create_by!(email: 'aaa@aaa.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
       customer.name = 'サンプル'
     end
   end
-  
+
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
@@ -18,5 +20,5 @@ class Customer < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
 end

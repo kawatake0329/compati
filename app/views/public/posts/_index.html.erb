@@ -10,17 +10,12 @@
   <tbody>
     <% posts.each do |post| %>
       <tr>
-        <td><%= link_to user_path(post.user) do %>
-          <%= image_tag post.user.get_profile_image(50,50) %>
-          <% end %>
-        </td>
-        <td><%= link_to post.title,post, class: "post_#{post.id}" %></td>
+        <td><%= link_to public_post_path(post.id) %></td>
         <td><%= post.description %></td>
         <td id="favorite_buttons_<%= post.id %>">
-          <%=render 'favorites/favorite', posts: post %>
         </td>
         <td>
-          <p>コメント件数：<%= post.post_comments.count %></p>
+          <i class="fas fa-tag"><%= post.tags.map(&:name).join(', ') %></i>
         </td>
       </tr>
     <% end %>

@@ -8,10 +8,6 @@
           <%= f.text_field :title, class: 'form-control book_title' %>
         </div>
         <div class="form-group">
-          <%= f.label :grade_id %>
-          <%= f.select :grade_id, Grade.grade_statuses.keys.to_a %>
-        </div>
-        <div class="form-group">
           <%= f.label :mother_board %>
           <%= f.text_area :mother_board, class: 'form-control' %>
         </div>

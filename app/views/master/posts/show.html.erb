@@ -1,53 +1,127 @@
-<div class = "container">
-  <div clas = "row">
-    <div class="col-2 mb-4">
-      <h3 class="table-active text-center">マイページ</h3>
+<div class='container px-5 px-sm-0'>
+  <div class='row shadow p-3 mb-5 rounded'>
+    <div class="col-12 mb-3">
+      <h2 class="text-center"><%= @post.title %></h2>
     </div>
-  </div>
+    <div class="col-8 offset-1">
+      <table class="table mb-4">
+        <tbody>
+          <tr>
+            <th>CPU</th>
+            <td><%= @post.cpu %></td>
+          </tr>
 
-  <div class = "row">
-    <div class = "col-lg-7 mb-4">
-        登録情報
-        <%= link_to "編集する", edit_public_customer_path(@customer), class: "right btn btn-success ml-4" %>
-    </div>
-  </div>
+          <tr>
+            <th>メモリー</th>
+            <td><%= @post.memory %></td>
+          </tr>
 
-  <div class = "row">
-    <div class = " col-lg-8 mb-4">
-      <table class = "table table-bordered">
+          <tr>
+            <th>ストレージ</th>
+            <td><%= @post.storage %></td>
+          </tr>
 
-        <tr>
-          <th class = "table-hover">プロフィール画像</th>
-          <td><%= image_tag @customer.get_profile_image(100,100), class:"my-2 card-img-top" %></td>
-        </tr>
+          <tr>
+            <th>
+              グラフィックボート(グラボ)
+            </th>
+            <td><%= @post.graphic_board %></td>
+          </tr>
 
-        <tr>
-          <th class = "table-hover">ニックネーム</th>
-          <td><%= @customer.name %></td>
-        </tr>
+          <tr>
+            <th>
+              マザーボード
+            </th>
+            <td><%= @post.mother_board %></td>
+          </tr>
 
-        <tr>
-          <th class = "table-hover">メールアドレス</th>
-          <td><%= @customer.email %></td>
-        </tr>
+          <tr>
+            <th>
+              ケース
+            </th>
+            <td><%= @post.case %></td>
+          </tr>
 
-        <tr>
-          <th>会員ステータス</th>
-          <td>
-            <%= @customer.deleted_user ? "有効" : "退会" %>
-          </td>
-        </tr>
+          <tr>
+            <th>
+              ケースファン
+            </th>
+            <td><%= @post.case_fan %></td>
+          </tr>
 
+          <tr>
+            <th>
+              電源装置
+            </th>
+            <td><%= @post.power %></td>
+          </tr>
+
+          <tr>
+            <th>
+              相互性
+            </th>
+            <td><%= @post.compatibility %></td>
+          </tr>
+
+          <tr>
+            <th>
+              説明
+            </th>
+            <td><%= @post.description %></td>
+          </tr>
+
+          <tr>
+            <th>
+              タグ
+            </th>
+            <td>
+              <% @post_tags.each do |tag| %>
+                <%= link_to tag.name, master_tag_posts_path(tag_id: tag.id) %><%="(#{tag.posts.count})" %>
+              <% end %>
+            </td>
+          </tr>
+
+          <tr>
+            <th>評価 :<%= @post.star %>点</th>
+            <td>
+              <div id="star-rate<%= @post.id%>"></div>
+              <script>
+                $('#star-rate<%= @post.id%>').raty({
+                  size      : 36,
+                  starOff   : '<%= asset_path('star-off.png') %>',
+                  starOn    : '<%= asset_path('star-on.png') %>',
+                  half      : false,
+                  readOnly: true,
+                  score: <%= @post.star %>,
+                });
+              </script>
+            </td>
+          </tr>
+
+        </tbody>
       </table>
-      <div class="col-lg-8 offset-lg-2">
-        <h2>投稿一覧（全<%= @posts.count %>件）</h2>
-        <%= render 'public/posts/index', posts: @posts%>
+      <div class="row">
+        <div class="col-8 offset-5 text-center mb-5">
+          <%= link_to "編集する", edit_master_post_path(@post), class:"btn btn-success rounded-pill text-center" %>
+          <%= link_to "削除する", master_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？' }, class:"btn btn-danger rounded-pill text-center" %>
+        </div>
+      </div>
+
+      <div class="comments-index">
+        <%= render 'master/post_comments/index', post: @post %>
       </div>
     </div>
-  </div>
-  <div class = "row">
-    <div class = "col-lg-7 mb-3">
+
+    <div class="col-md-3">
+      <h2>投稿者</h2>
+      <h3>
+        <%= link_to master_customer_path(@customer) do %>
+          <%= @customer.name %>
+        <% end %>
+      </h3>
+      <%= link_to master_customer_path(@customer) do %>
+        <%= image_tag @customer.get_profile_image(100,100), class:"my-2 card-img-top" %>
+      <% end %>
     </div>
-  </div>
   </div>
 </div>

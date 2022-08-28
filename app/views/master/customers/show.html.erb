@@ -1,36 +1,39 @@
 <div class = "container">
   <div clas = "row">
-    <div class="col-2 mb-4">
-      <h3 class="table-active text-center"><%= @customer.name %>様の会員除法ページ</h3>
+    <div class="col-6 my-5">
+      <h3 class="table-active text-center"><%= @customer.name %>様の会員詳細ページ</h3>
     </div>
   </div>
   <div class = "row">
     <div class = "col-lg-7 mb-4">
         登録情報
-        <%= link_to "編集する", edit_public_customer_path(@customer), class: "right btn btn-success ml-4" %>
+        <%= link_to "編集する", edit_master_customer_path(@customer), class: "right btn btn-success ml-4" %>
     </div>
   </div>
   <div class = "row">
     <div class = " col-lg-8 mb-4">
       <table class = "table table-bordered">
+
         <tr>
           <th class = "table-hover">ニックネーム</th>
           <th><%= @customer.name %></th>
         </tr>
+
         <tr>
           <th class = "table-hover">メールアドレス</th>
           <th><%= @customer.email %></th>
         </tr>
+
         <tr>
           <th>会員ステータス</th>
-          <td><%= @customer.deleted_user ? "退会" : "有効" %></td>
+          <td><%= @customer.deleted_user ? "有効" : "退会" %></td>
         </tr>
+
       </table>
+      <div class="col-lg-8 offset-lg-2">
+        <h2>投稿一覧（全<%= @posts.count %>件）</h2>
+        <%= render 'master/posts/index', posts: @posts%>
+      </div>
     </div>
-  </div>
-  <div class = "row">
-    <div class = "col-lg-7 mb-3">
-    </div>
-  </div>
   </div>
 </div>

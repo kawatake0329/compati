@@ -24,12 +24,12 @@
             <tr>
               <td><%= customer.id %></td>
               <td>
-                <%= link_to public_customer_path(customer) do %>
+                <%= link_to master_customer_path(customer) do %>
                  <%= customer.name %>
                 <% end %>
               </td>
               <td><%= customer.email %></td>
-              <td><%= user.deleted_user ? '有効' : '退会' %></td>
+              <td><%= customer.deleted_user ? '有効' : '退会' %></td>
             </tr>
           <% end %>
         </tbody>

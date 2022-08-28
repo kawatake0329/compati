@@ -31,7 +31,7 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-     @tag_list=@post.tags.pluck(:name).join(',')
+    @tag_list=@post.tags.pluck(:name).join(',')
   end
 
   def update
@@ -47,8 +47,12 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to public_posts_path
+    if @post.destroy
+      redirect_to public_posts_path
+    else
+       @post = Post.find(params[:id])
+      render 'show'
+    end
   end
 
   def search
@@ -60,6 +64,6 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :mother_board, :cpu, :memory, :storage, :graphic_board, :case, :power, :compatibility, :description, :star)
+    params.require(:post).permit(:title, :mother_board, :cpu, :memory, :storage, :graphic_board, :case, :case_fan, :power, :compatibility, :description, :star)
   end
 end

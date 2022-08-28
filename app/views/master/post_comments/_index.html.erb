@@ -1,7 +1,7 @@
 <table>
   <% post.post_comments.each do |post_comment| %>
   <tr>
-    <td><%= link_to public_customer_path(post_comment.customer.id) do %>
+    <td><%= link_to master_customer_path(post_comment.customer.id) do %>
       <%= post_comment.customer.name %>
       <% end %>
     </td>
@@ -20,9 +20,7 @@
       </script>
     </td>
     <td>
-      <% if post_comment.customer == current_customer %>
-        <%= link_to "削除する", public_post_post_comment_path(post, post_comment.id), method: :delete, remote: true, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
-      <% end %>
+      <%= link_to "Destroy", master_post_post_comment_path(post, post_comment.id), method: :delete, remote: true, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
     </td>
   </tr>
   <% end %>

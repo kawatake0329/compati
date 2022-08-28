@@ -15,9 +15,15 @@ Rails.application.routes.draw do
   end
 
   namespace :master do
-    resources :posts, only: [:index, :show, :edit, :update, :destroy]
+    resources :posts, only: [:index, :show, :edit, :update, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
     resources :customers, only: [:index, :show, :edit, :update,]
+    resources :tags do
+      get 'posts', to: 'posts#search'
+    end
   end
+
   devise_for :masters,controllers: {
     sessions: "master/sessions"
   }

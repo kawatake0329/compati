@@ -10,56 +10,66 @@
             <th>CPU</th>
             <td><%= @post.cpu %></td>
           </tr>
+          
           <tr>
             <th>メモリー</th>
             <td><%= @post.memory %></td>
           </tr>
+          
           <tr>
             <th>ストレージ</th>
             <td><%= @post.storage %></td>
           </tr>
+          
           <tr>
             <th>
               グラフィックボート(グラボ)
             </th>
             <td><%= @post.graphic_board %></td>
           </tr>
+          
           <tr>
             <th>
               マザーボード
             </th>
             <td><%= @post.mother_board %></td>
           </tr>
+          
           <tr>
             <th>
               ケース
             </th>
             <td><%= @post.case %></td>
           </tr>
+          
           <tr>
             <th>
               ケースファン
             </th>
             <td><%= @post.case_fan %></td>
           </tr>
+          
           <tr>
             <th>
               電源装置
             </th>
             <td><%= @post.power %></td>
           </tr>
+          
           <tr>
             <th>
               相互性
             </th>
             <td><%= @post.compatibility %></td>
           </tr>
+          
           <tr>
             <th>
               説明
             </th>
             <td><%= @post.description %></td>
           </tr>
+          
           <tr>
             <th>
               タグ
@@ -70,6 +80,7 @@
               <% end %>
             </td>
           </tr>
+          
           <tr>
             <th>評価 :<%= @post.star %>点</th>
             <td>
@@ -86,6 +97,7 @@
               </script>
             </td>
           </tr>
+          
         </tbody>
       </table>
       <div class="row">
@@ -96,6 +108,7 @@
           <% end %>
         </div>
       </div>
+      
       <div class="comments-index">
         <%= render 'public/post_comments/index', post: @post %>
       </div>
@@ -103,6 +116,7 @@
         <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
       </div>
     </div>
+    
     <div class="col-md-3">
       <h2>投稿者</h2>
       <h3>

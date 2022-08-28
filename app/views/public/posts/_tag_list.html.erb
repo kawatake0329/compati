@@ -1,4 +1,16 @@
-<% @tag_list.each do |list|%>
-  <%=list.name %>
-  <%="(#{list.posts.count})" %>
-<% end %>
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>タグ</th>
+  </thead>
+  <tbody>
+    <tr>
+      <% tag_list.each do |list|%>
+      <td>
+        <%=link_to list.name, public_tag_posts_path(tag_id: list.id) %>
+        <%="(#{list.posts.count})" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

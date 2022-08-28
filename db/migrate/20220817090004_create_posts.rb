@@ -13,6 +13,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.text :power
       t.text :compatibility
       t.text :description
+      t.string :star
       t.timestamps
     end
   end

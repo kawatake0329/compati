@@ -1,7 +1,7 @@
 <div class = "container">
   <div clas = "row">
     <div class="col-2 mb-4">
-      <h3 class="table-active text-center">マイページ</h3>
+      <h3 class="table-active text-center"><%= @customer.name %>様の会員除法ページ</h3>
     </div>
   </div>
   <div class = "row">
@@ -14,22 +14,18 @@
     <div class = " col-lg-8 mb-4">
       <table class = "table table-bordered">
         <tr>
-          <th class = "table-hover">プロフィール画像</th>
-          <td><%= image_tag @customer.get_profile_image(100,100), class:"my-2 card-img-top" %></td>
-        </tr>
-        <tr>
           <th class = "table-hover">ニックネーム</th>
-          <td><%= @customer.name %></td>
+          <th><%= @customer.name %></th>
         </tr>
         <tr>
           <th class = "table-hover">メールアドレス</th>
-          <td><%= @customer.email %></td>
+          <th><%= @customer.email %></th>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td><%= @customer.deleted_user ? "退会" : "有効" %></td>
         </tr>
       </table>
-      <div class="col-lg-8 offset-lg-2">
-        <h2>投稿一覧（全<%= @posts.count %>件）</h2>
-        <%= render 'public/posts/index', posts: @posts%>
-      </div>
     </div>
   </div>
   <div class = "row">

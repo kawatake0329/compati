@@ -1,0 +1,14 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row shadow p-3 mb-5 rounded'>
+    <div class="col-md-10">
+      <div class="col-lg-8 offset-lg-2">
+        <h2><%= @tag.name %>の投稿一覧（全<%= @posts.count %>件）</h2>
+        <%= render 'index', posts: @posts%>
+      </div>
+    </div>
+    <div class='col-md-2'>
+      <h3>タグ一覧 (全<%= @tag_list.count %>件) </h3>
+      <%= render 'tag_list', tag_list: @tag_list%>
+    </div>
+  </div>
+</div>

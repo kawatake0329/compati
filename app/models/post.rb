@@ -1,7 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :customer
-  has_many :post_tags,dependent: :destroy
-  has_many :tags,through: :post_tags
+  has_many :post_comments, dependent: :destroy
+  has_many :post_tags, dependent: :destroy
+  has_many :tags, through: :post_tags
 
 
 
@@ -15,7 +16,7 @@ class Post < ApplicationRecord
 
     # 古いタグを消す
     old_tags.each do |old|
-      self.tags.delete　Tag.find_by(name: old)
+      self.tags.delete Tag.find_by(name: old)
     end
 
     # 新しいタグを保存

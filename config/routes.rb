@@ -5,16 +5,18 @@ Rails.application.routes.draw do
   get "public/home/about"=>"public/homes#about"
 
   namespace :public do
-    resources :posts, only: [:new, :show, :index, :create, :edit, :update] do
+    resources :posts, only: [:new, :show, :index, :create, :edit, :update, :destroy] do
       resources :post_comments, only: [:create, :destroy]
     end
-    get "customer/mypage"=>"customers#show"
-    resources :customers, only: [:index, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :tags do
+      get 'posts', to: 'posts#search'
+    end
   end
 
   namespace :master do
-    resources :posts, only: [:index, :show, :edit, :update]
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :posts, only: [:index, :show, :edit, :update, :destroy]
+    resources :customers, only: [:index, :show, :edit, :update,]
   end
   devise_for :masters,controllers: {
     sessions: "master/sessions"

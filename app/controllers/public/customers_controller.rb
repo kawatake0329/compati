@@ -4,7 +4,8 @@ class Public::CustomersController < ApplicationController
   end
 
   def show
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
+    @posts = @customer.posts
   end
 
   def edit
@@ -14,7 +15,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to public_customer_mypage_path(@customer), notice: '編集成功.'
+      redirect_to public_customer_path(@customer), notice: '編集成功.'
     else
       render :edit
     end

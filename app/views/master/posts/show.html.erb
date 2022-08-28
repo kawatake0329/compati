@@ -4,27 +4,40 @@
       <h3 class="table-active text-center">マイページ</h3>
     </div>
   </div>
+
   <div class = "row">
     <div class = "col-lg-7 mb-4">
         登録情報
         <%= link_to "編集する", edit_public_customer_path(@customer), class: "right btn btn-success ml-4" %>
     </div>
   </div>
+
   <div class = "row">
     <div class = " col-lg-8 mb-4">
       <table class = "table table-bordered">
+
         <tr>
           <th class = "table-hover">プロフィール画像</th>
           <td><%= image_tag @customer.get_profile_image(100,100), class:"my-2 card-img-top" %></td>
         </tr>
+
         <tr>
           <th class = "table-hover">ニックネーム</th>
           <td><%= @customer.name %></td>
         </tr>
+
         <tr>
           <th class = "table-hover">メールアドレス</th>
           <td><%= @customer.email %></td>
         </tr>
+
+        <tr>
+          <th>会員ステータス</th>
+          <td>
+            <%= @customer.deleted_user ? "有効" : "退会" %>
+          </td>
+        </tr>
+
       </table>
       <div class="col-lg-8 offset-lg-2">
         <h2>投稿一覧（全<%= @posts.count %>件）</h2>

@@ -25,4 +25,7 @@ class Post < ApplicationRecord
       self.tags << new_post_tag
     end
   end
+
+  scope :latest, -> {order(updated_at: :desc)}
+  scope :old, -> {order(updated_at: :asc)}
 end

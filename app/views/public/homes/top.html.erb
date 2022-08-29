@@ -1,0 +1,13 @@
+<div class="container_fluid">
+  <div class="col-md-12 top">
+    <%= image_tag 'pctop.jpg',size: '1346x1000'%>
+    <div class="btn-wrapper col-10 mx-auto top_btn">
+      <div class="row">
+        <%= link_to 'Log in',new_customer_session_path, class: "btn btn-outline-dark btn-sm btn-block mb-3 sign_in " %>
+      </div>
+      <div class="row">
+        <%= link_to 'Sign Up',new_customer_registration_path, class: "btn btn-outline-dark btn-sm btn-block sign_up " %>
+      </div>
+    </div>
+  </div>
+</div>

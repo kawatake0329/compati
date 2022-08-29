@@ -10,6 +10,10 @@
     <div class="col-lg-10">
       <div class="col-lg-8 offset-lg-2">
         <h2>投稿一覧（全<%= @posts.count %>件）</h2>
+        <p>
+          <%= link_to '新しい順', public_posts_path(latest: "true") %>
+          |<%= link_to '古い順', public_posts_path(old: "true") %>
+        </p>
         <%= render 'index', posts: @posts%>
       </div>
     </div>

@@ -5,7 +5,13 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    if params[:latest]
+      @posts = Post.latest
+    elsif params[:old]
+      @posts = Post.old
+    else
+      @posts = Post.all
+    end
     @tag_list=Tag.all
   end
 

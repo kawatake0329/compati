@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :tags do
       get 'posts', to: 'posts#search'
     end
+    get 'events/search/sort_new', to: 'events#search', as: 'sort_new'
+    get 'events/search/sort_old', to: 'events#search', as: 'sort_old'
   end
 
   namespace :master do

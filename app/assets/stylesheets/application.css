@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+.top {
+  position: relative;
+  }
+
+.top_btn {
+  position: absolute;
+  /*文字の装飾は省略*/
+  }

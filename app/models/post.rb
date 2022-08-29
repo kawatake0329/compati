@@ -4,6 +4,12 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
 
+  validates :title, presence: true
+  validates :cpu, presence: true
+  validates :memory, presence: true
+  validates :storage, presence: true
+  validates :graphic_board, presence: true
+
 
 
   def save_tag(sent_tags)

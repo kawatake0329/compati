@@ -14,10 +14,15 @@
  *= require_self
  */
 .top {
-  position: relative;
+  height:960px;
+  background-image: url('pctop.jpg');
   }
+.top h2 {
+  font-size: 90px;
+  color: #fff;
+}
 
-.top_btn {
-  position: absolute;
-  /*文字の装飾は省略*/
-  }
+
+.top_btn{
+  padding-top: 240px;
+}

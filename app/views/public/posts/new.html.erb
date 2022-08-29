@@ -4,28 +4,28 @@
   		<h1>新しい投稿</h1>
   		<%= form_with model:@post, url: public_posts_path, method: :post, local:true do |f| %>
   		  <div class="form-group">
-          <%= f.label :title ,'タイトル' %>
+          <%= f.label :title ,'タイトル*必須入力' %>
           <%= f.text_field :title, class: 'form-control book_title' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :cpu,'CPU*必須入力'  %>
+          <%= f.text_area :cpu, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :memory, 'メモリー*必須入力' %>
+          <%= f.text_area :memory, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :storage, 'ストレージ*必須入力' %>
+          <%= f.text_area :storage, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :graphic_board, 'グラフィックボード(グラボ)*必須入力' %>
+          <%= f.text_area :graphic_board, class: 'form-control' %>
         </div>
         <div class="form-group">
           <%= f.label :mother_board,'マザーボード'  %>
           <%= f.text_area :mother_board, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :cpu,'CPU'  %>
-          <%= f.text_area :cpu, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :memory, 'メモリー' %>
-          <%= f.text_area :memory, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :storage, 'ストレージ' %>
-          <%= f.text_area :storage, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :graphic_board, 'グラフィックボード(グラボ)' %>
-          <%= f.text_area :graphic_board, class: 'form-control' %>
         </div>
         <div class="form-group">
           <%= f.label :case, 'ケース' %>

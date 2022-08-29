@@ -24,7 +24,7 @@
                  <%= customer.name %>
                 <% end %>
               </td>
-              <td><%= customer.email %></td>
+              <td><%= image_tag customer.get_profile_image(100,100), class:"my-2 card-img-top" %>></td>
             </tr>
           <% end %>
         </tbody>

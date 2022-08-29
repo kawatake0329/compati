@@ -28,7 +28,7 @@ class Public::PostsController < ApplicationController
     tag_list = params[:post][:name].split(',')
     if @post.save
       @post.save_tag(tag_list)
-      redirect_to public_posts_path, notice: "You have created post successfully."
+      redirect_to public_post_path(@post), notice: "You have created post successfully."
     else
       @post = Post.new(post_params)
       render 'new'

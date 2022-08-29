@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :masters,controllers: {
+    registrations: "master/registrations",
     sessions: "master/sessions"
   }
 

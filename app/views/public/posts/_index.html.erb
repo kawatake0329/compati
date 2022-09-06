@@ -4,7 +4,8 @@
       <th></th>
       <th>タイトル</th>
       <th>説明</th>
-      <th colspan="3"></th>
+      <th>評価(平均値)</th>
+      <th>タグ</th>
     </tr>
   </thead>
 
@@ -20,11 +21,23 @@
         <td>
         <%= post.description %>
         </td>
-        <td id="favorite_buttons_<%= post.id %>">
+        <td>
+          <div id="star-rate<%= post.id %>"></div>
+          <script>
+            $('#star-rate<%= post.id %>').raty({
+              size      : 36,
+              starOff   : '<%= asset_path('star-off.png') %>',
+              starOn    : '<%= asset_path('star-on.png') %>',
+              half      : false,
+              readOnly: true,
+              score: <%= post.post_comments.average(:rate).to_f.round(1).floor %>,
+            });
+          </script>(<%= post.post_comments.average(:rate).to_f.round(1) %>)
         </td>
         <td>
           <i class="fas fa-tag"></i><%= post.tags.map(&:name).join(', ') %>
         </td>
+        <td></td>
       </tr>
     <% end %>
   </tbody>

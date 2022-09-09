@@ -1,5 +1,5 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row shadow p-3 mb-5 rounded'>
+<div class='container-fluid px-5 px-sm-0'>
+  <div class='row'>
     <div class='col-lg-3'>
       <div class='col-md-8 offset-md-1'>
         <%= link_to  new_public_post_path do %>
@@ -7,13 +7,15 @@
         <% end %>
       </div>
     </div>
-    <div class="col-lg-10">
+    <div class="col-lg-9 offset-lg-1 shadow p-3 mb-5 rounded">
       <h2>投稿一覧（全<%= @posts.count %>件）</h2>
       <p>
         <%= link_to '新しい順', public_posts_path(latest: "true") %>
         |<%= link_to '古い順', public_posts_path(old: "true") %>
       </p>
-      <%= render 'index', posts: @posts%>
+      <div class="row">
+        <%= render 'index', posts: @posts%>
+      </div>
     </div>
     <div class='col-lg-2 border-start (border-width: 2px)'>
       <h3>タグ一覧 (全<%= @tag_list.count %>件) </h3>

@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :correct_customer, only: [:edit, :update]
 
   def new
     @post = Post.new
@@ -71,5 +72,11 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :mother_board, :cpu, :memory, :storage, :graphic_board, :case, :case_fan, :power, :compatibility, :description, :star)
+  end
+
+  def correct_customer
+    @post = Post.find(params[:id])
+    @customer = @post.customer
+    redirect_to(public_posts_path) unless @customer == current_customer
   end
 end

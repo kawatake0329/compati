@@ -11,6 +11,7 @@
       <td>
         <div id="star-rate<%= post_comment.id%>"></div>
         <script>
+          $('#star-rate<%= post_comment.id%>').empty();
           $('#star-rate<%= post_comment.id%>').raty({
             size      : 36,
             starOff   : '<%= asset_path('star-off.png') %>',

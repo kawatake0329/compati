@@ -4,8 +4,7 @@ class Public::PostCommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @post_comment = current_customer.post_comments.new(post_comment_params)
     @post_comment.post_id = @post.id
-    if@post_comment.save
-      render :create
+    if @post_comment.save
     else
       @post = Post.find(params[:post_id])
       redirect_to public_post_path(@post)
@@ -14,7 +13,7 @@ class Public::PostCommentsController < ApplicationController
 
   def destroy
     PostComment.find(params[:id]).destroy
-    render :destroy
+    @post = Post.find(params[:post_id])
   end
 
   private

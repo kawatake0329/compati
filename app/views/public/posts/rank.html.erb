@@ -1,0 +1,25 @@
+<% post_ranks.each.with_index(1) do |post, i| %>
+第<%= i %>位
+  <div class="card mr-4 mb-5" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= post.title %></h5>
+      <div class="card-subtitle mb-2 text-muted">
+        <div id="star-rate<%= post.id %>"></div>
+          <script>
+            $('#star-rate<%= post.id %>').empty();
+            $('#star-rate<%= post.id %>').raty({
+              size      : 36,
+              starOff   : '<%= asset_path('star-off.png') %>',
+              starOn    : '<%= asset_path('star-on.png') %>',
+              half      : false,
+              readOnly: true,
+              score: <%= post.post_comments.average(:rate).to_f.round(1).floor %>,
+            });
+          </script>(<%= post.post_comments.average(:rate).to_f.round(1) %>)
+      </div>
+      <p class="card-text"><%= post.description %></p>
+      <i class="fas fa-tag"></i><%= post.tags.map(&:name).join(', ') %>
+      <%= link_to "見る", public_post_path(post.id), class:"btn btn-primary" %>
+    </div>
+  </div>
+<%= end %>

@@ -21,4 +21,7 @@ validates :comment,presence:true
     end
   end
 
+  def rate_count
+    post_comments.average(:rate).to_f.round(1)
+  end
 end

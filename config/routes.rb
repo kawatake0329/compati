@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :posts, only: [:new, :show, :index, :create, :edit, :update, :destroy] do
+      collection do
+        get 'rank'
+      end
       resources :post_comments, only: [:create, :destroy]
-      get 'rank', to: 'posts#rank'
     end
     resources :customers, only: [:index, :show, :edit, :update]
     resources :tags do

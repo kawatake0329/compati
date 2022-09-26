@@ -34,4 +34,8 @@ class Post < ApplicationRecord
 
   scope :latest, -> {order(updated_at: :desc)}
   scope :old, -> {order(updated_at: :asc)}
+  scope :rank, -> {
+    left_joins(:post_comments).
+    group(:id).
+    order('avg(rate) desc')}
 end

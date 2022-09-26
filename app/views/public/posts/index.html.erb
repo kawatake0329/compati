@@ -8,10 +8,11 @@
       </div>
     </div>
     <div class="col-lg-9 offset-lg-1 shadow p-3 mb-5 rounded">
-      <h2>投稿一覧（全<%= @posts.count %>件）</h2>
+      <h2>投稿一覧</h2>
       <p>
         <%= link_to '新しい順', public_posts_path(latest: "true") %>
         |<%= link_to '古い順', public_posts_path(old: "true") %>
+        |<%= link_to 'ランキング', public_posts_path(rank: "true") %>
       </p>
       <div class="row">
         <%= render 'index', posts: @posts%>

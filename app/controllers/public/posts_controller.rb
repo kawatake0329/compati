@@ -10,6 +10,8 @@ class Public::PostsController < ApplicationController
       @posts = Post.latest
     elsif params[:old]
       @posts = Post.old
+    elsif params[:rank]
+      @posts = Post.rank
     else
       @posts = Post.all
     end
@@ -67,10 +69,10 @@ class Public::PostsController < ApplicationController
     @tag = Tag.find(params[:tag_id])  #クリックしたタグを取得
     @posts = @tag.posts.all           #クリックしたタグに紐付けられた投稿を全て表示
   end
-  
+
   def rank
     @post_rate_ranks = Post.find(PostComment.group(:post_id).order('count(rate_count) desc').pluck(:rate_count))
-
+  end
   private
 
   def post_params

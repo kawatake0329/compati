@@ -39,3 +39,5 @@ class Post < ApplicationRecord
     group(:id).
     order('avg(rate) desc')}
 end
+
+

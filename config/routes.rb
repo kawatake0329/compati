@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :edit, :update, :destroy] do
       resources :post_comments, only: [:destroy]
     end
+    resources :specs, only: [:index, :create, :edit, :update, :destroy]
     resources :customers, only: [:index, :show, :edit, :update,]
     resources :tags do
       get 'posts', to: 'posts#search'

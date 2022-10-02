@@ -1,0 +1,40 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-lg-4 offset-lg-1 mb-5'>
+      <h3 class="alert alert-info text-center">スペック一覧</h3>
+      <%= form_with model: @spec, url:master_specs_path, method: :post do |f| %>
+        <%= f.label :name, "スペック名", class: 'ml-5' %>
+        <%= f.text_field :name, class: 'ml-5' %>
+        <%= f.submit "新規登録", class:"btn btn-success ml-5" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="text-center">
+    <div class="col-lg-8">
+      <table class='table'>
+
+        <thead class="thead-light">
+          <tr>
+            <th>ID</th>
+            <th>スペック</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @specs.each do |spec| %>
+            <tr>
+              <td><%= spec.id %></td>
+              <td>
+                <%= link_to edit_master_spec_path(spec) do %>
+                 <%= spec.name %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+
+      </table>
+    </div>
+  <div>
+</div>

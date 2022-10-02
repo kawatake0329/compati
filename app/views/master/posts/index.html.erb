@@ -1,5 +1,12 @@
 <div class='container px-5 px-sm-0'>
   <div class='row shadow p-3 mb-5 rounded'>
+    <div class="col-lg-3">
+      <div class='col-md-8 offset-md-1'>
+        <%= link_to  master_specs_path do %>
+        <div class="border text-center">スペック一覧</div>
+        <% end %>
+      </div>
+    </div>
     <div class="col-lg-8">
       <h2>投稿一覧（全<%= @posts.count %>件）</h2>
       <%= render 'index', posts: @posts %>

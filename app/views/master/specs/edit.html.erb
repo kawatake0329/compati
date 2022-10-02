@@ -1,0 +1,25 @@
+<div class = "container">
+  <div clas = "row">
+    <div class="col-8 mt-4">
+      <h2 class="table-active text-center">プロフィール編集</h2>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = " col-lg-8 mb-4">
+      <%= form_with model: @spec, url:master_spec_path, method: :patch do |f| %>
+      <div class="form-group row">
+        <label for="inputName">Name</label>
+        <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前" %>
+      </div>
+      <div class="form-group mb-4 row">
+        <%= f.submit "変更を保存",class: "btn btn-success col-sm-3 font-weight-bold" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-lg-7 mb-3">
+      <%= link_to "削除する", master_spec_path(@spec.id), method: :delete, data: { confirm: '本当に消しますか？' }, class:"btn btn-danger rounded-pill text-center" %>
+    </div>
+  </div>
+</div>

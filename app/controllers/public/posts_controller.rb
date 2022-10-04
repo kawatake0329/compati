@@ -3,6 +3,7 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @specs = Spec.all
   end
 
   def index

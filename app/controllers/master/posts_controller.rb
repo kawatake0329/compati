@@ -1,7 +1,7 @@
 class Master::PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page])
     @tag_list=Tag.all
   end
 

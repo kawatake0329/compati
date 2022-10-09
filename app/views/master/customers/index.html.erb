@@ -32,6 +32,7 @@
               <td><%= customer.deleted_user ? '有効' : '退会' %></td>
             </tr>
           <% end %>
+          <%= paginate @customers %>
         </tbody>
 
       </table>

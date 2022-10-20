@@ -8,13 +8,13 @@ class Public::PostsController < ApplicationController
 
   def index
     if params[:latest]
-      @posts = Post.latest
+      @posts = Post.latestt.page(params[:page])
     elsif params[:old]
-      @posts = Post.old
+      @posts = Post.old.page(params[:page])
     elsif params[:rank]
-      @posts = Post.rank
+      @posts = Post.rank.page(params[:page])
     else
-      @posts = Post.all
+      @posts = Post.page(params[:page])
     end
     @tag_list=Tag.all
   end
@@ -72,8 +72,8 @@ class Public::PostsController < ApplicationController
   end
 
   def rank
-    @post_rate_ranks = Post.find(PostComment.group(:post_id).order('count(rate_count) desc').pluck(:rate_count))
   end
+
   private
 
   def post_params

@@ -14,6 +14,12 @@ class Customer < ApplicationRecord
       customer.name = 'サンプル'
     end
   end
+  
+  def self.looks(search,word)
+    if search == "perfect_match"
+      @customer = Customer.where("title LIKE?","#{word}")
+    elsif search == "forward_match"
+      @customer = Customer.where("title LIKE")
 
   def get_profile_image(width, height)
     unless profile_image.attached?

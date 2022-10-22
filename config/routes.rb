@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       end
       resources :post_comments, only: [:create, :destroy]
     end
+    get "search" => "searches#search"
     resources :customers, only: [:index, :show, :edit, :update]
     resources :tags do
       get 'posts', to: 'posts#search'

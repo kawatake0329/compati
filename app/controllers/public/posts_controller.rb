@@ -72,8 +72,8 @@ class Public::PostsController < ApplicationController
   end
 
   def rank
-    @post_rate_ranks = Post.find(PostComment.group(:post_id).order('count(rate_count) desc').pluck(:rate_count))
   end
+
   private
 
   def post_params

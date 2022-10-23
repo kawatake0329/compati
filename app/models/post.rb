@@ -12,7 +12,6 @@ class Post < ApplicationRecord
   validates :graphic_board, presence: true
 
 
-
   def save_tag(sent_tags)
     # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
@@ -39,6 +38,30 @@ class Post < ApplicationRecord
     left_joins(:post_comments).
     group(:id).
     order('avg(rate) desc')}
+
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @post = Post.where("title LIKE? mother_board LIKE?
+      OR cpu LIKE? OR memory LIKE? OR storage LIKE?
+      OR graphic_board LIKE? OR case LIKE? OR case_fan LIKE?
+      OR power LIKE? OR compatibility LIKE? OR description LIKE?","#{word}")
+    elsif search == "forward_match"
+      @post = Post.where("title LIKE? mother_board LIKE?
+      OR cpu LIKE? OR memory LIKE? OR storage LIKE?
+      OR graphic_board LIKE? OR case LIKE? OR case_fan LIKE?
+      OR power LIKE? OR compatibility LIKE? OR description LIKE?","#{word}")
+    elsif search == "backward_match"
+      @post = Post.where("title LIKE? mother_board LIKE?
+      OR cpu LIKE? OR memory LIKE? OR storage LIKE?
+      OR graphic_board LIKE? OR case LIKE? OR case_fan LIKE?
+      OR power LIKE? OR compatibility LIKE? OR description LIKE?","#{word}")
+    elsif search == "partial_match"
+      @post = Post.where("title LIKE? mother_board LIKE?
+      OR cpu LIKE? OR memory LIKE? OR storage LIKE?
+      OR graphic_board LIKE? OR case LIKE? OR case_fan LIKE?
+      OR power LIKE? OR compatibility LIKE? OR description LIKE?","#{word}")
+    else
+      @post = Post.all
+    end
+  end
 end
-
-

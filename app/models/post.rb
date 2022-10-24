@@ -40,26 +40,34 @@ class Post < ApplicationRecord
     order('avg(rate) desc')}
 
   def self.looks(search, word)
+    # 完全一致の場合の処理
     if search == "perfect_match"
-      @post = Post.where("title LIKE? mother_board LIKE?
+      @post = Post.where("title LIKE? OR mother_board LIKE?
       OR cpu LIKE? OR memory LIKE? OR storage LIKE?
       OR graphic_board LIKE? OR case LIKE? OR case_fan LIKE?
-      OR power LIKE? OR compatibility LIKE? OR description LIKE?","#{word}")
+      OR power LIKE? OR compatibility LIKE? OR description LIKE?",
+      "#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}")
+    # 前方一致の場合の処理
     elsif search == "forward_match"
       @post = Post.where("title LIKE? mother_board LIKE?
       OR cpu LIKE? OR memory LIKE? OR storage LIKE?
       OR graphic_board LIKE? OR case LIKE? OR case_fan LIKE?
-      OR power LIKE? OR compatibility LIKE? OR description LIKE?","#{word}")
+      OR power LIKE? OR compatibility LIKE? OR description LIKE?",
+      "#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}")
+    # 後半一致の場合の処理
     elsif search == "backward_match"
       @post = Post.where("title LIKE? mother_board LIKE?
       OR cpu LIKE? OR memory LIKE? OR storage LIKE?
       OR graphic_board LIKE? OR case LIKE? OR case_fan LIKE?
-      OR power LIKE? OR compatibility LIKE? OR description LIKE?","#{word}")
+      OR power LIKE? OR compatibility LIKE? OR description LIKE?",
+      "#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}")
+    # 部分一致の場合の処理
     elsif search == "partial_match"
       @post = Post.where("title LIKE? mother_board LIKE?
       OR cpu LIKE? OR memory LIKE? OR storage LIKE?
       OR graphic_board LIKE? OR case LIKE? OR case_fan LIKE?
-      OR power LIKE? OR compatibility LIKE? OR description LIKE?","#{word}")
+      OR power LIKE? OR compatibility LIKE? OR description LIKE?",
+      "#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}","#{word}")
     else
       @post = Post.all
     end

@@ -1,0 +1,13 @@
+<h2>Results index</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがUserの時 -->
+  <% if @range == "Customer" %>
+     <%= render "public/customers/index", customers: @customers %>
+  <% else %>
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+    <div class="row">
+      <%= render 'public/posts/index', posts: @posts%>
+    </div>
+  <% end %>
+</table>

@@ -2,6 +2,9 @@ class PostComment < ApplicationRecord
   belongs_to :customer
   belongs_to :post
 
+validates :rate,presence:true
+validates :comment,presence:true
+
   def avg_score
     unless self.rate.empty?
       comments.average(:rate_id).round(1)

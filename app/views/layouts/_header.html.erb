@@ -1,57 +1,62 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <% if master_signed_in? %>
-        <%= link_to "compati", master_posts_path, class: "" %>
-      <% else %>
-        <%= link_to "comapti", root_path, class: "" %>
-      <% end %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
+      <div class="row">
         <% if master_signed_in? %>
-          <li>
-            <%= link_to "Top", root_path, class: 'btn btn-primary btn-lg' %>
-          </li>
-          <li>
-            <%=  link_to "投稿一覧", master_posts_path, class: 'btn btn-primary btn-lg ml-4' %>
-          </li>
-          <li>
-            <%= link_to "ユーザー一覧", master_customers_path, class: 'btn btn-primary btn-lg ml-4' %>
-          </li>
-          <li>
-            <%= link_to "ログアウト", destroy_master_session_path, method: :delete, class: 'btn btn-secondary btn-lg ml-4' %>
-          </li>
-        <% elsif customer_signed_in? %>
-          <li>
-            <%= link_to "投稿一覧", public_posts_path, class: 'btn btn-primary btn-lg' %>
-          </li>
-          <!--<li>-->
-          <!--  <%#= link_to "ランキング", rank_public_posts_path, class: 'btn btn-primary btn-lg' %>-->
-          <!--</li>-->
-          <li>
-            <%= link_to "ユーザー一覧", public_customers_path, class: 'btn btn-primary btn-lg ml-4' %>
-          </li>
-          <li>
-            <%= link_to "プロフィール", public_customer_path(current_customer), class: 'btn btn-primary btn-lg ml-4' %>
-          </li>
-          <li>
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-secondary btn-lg ml-4' %>
-          </li>
+          <%= link_to "compati", master_posts_path, class: "" %>
         <% else %>
-          <li>
-            <%= link_to "Sign_in", new_customer_session_path, class: 'btn btn-primary btn-lg ml-4' %>
-          </li>
-          <li>
-            <%= link_to "Sign_up", new_customer_registration_path, class: 'btn btn-primary btn-lg ml-4' %>
-          </li>
-          <li>
-            <%= link_to "Gest_log_in", public_guest_sign_in_path, method: :post, class: 'btn btn-primary btn-lg ml-4' %>
-          </li>
+          <%= link_to "comapti", root_path, class: "" %>
         <% end %>
-        </ul>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+          <% if master_signed_in? %>
+            <li>
+              <%= link_to "Top", root_path, class: 'btn btn-primary btn-lg' %>
+            </li>
+            <li>
+              <%=  link_to "投稿一覧", master_posts_path, class: 'btn btn-primary btn-lg ml-4' %>
+            </li>
+            <li>
+              <%= link_to "ユーザー一覧", master_customers_path, class: 'btn btn-primary btn-lg ml-4' %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_master_session_path, method: :delete, class: 'btn btn-secondary btn-lg ml-4' %>
+            </li>
+          <% elsif customer_signed_in? %>
+            <li>
+              <%= link_to "投稿一覧", public_posts_path, class: 'btn btn-primary btn-lg' %>
+            </li>
+            <!--<li>-->
+            <!--  <%#= link_to "ランキング", rank_public_posts_path, class: 'btn btn-primary btn-lg' %>-->
+            <!--</li>-->
+            <li>
+              <%= link_to "ユーザー一覧", public_customers_path, class: 'btn btn-primary btn-lg ml-4' %>
+            </li>
+            <li>
+              <%= link_to "プロフィール", public_customer_path(current_customer), class: 'btn btn-primary btn-lg ml-4' %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-secondary btn-lg ml-4' %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Sign_in", new_customer_session_path, class: 'btn btn-primary btn-lg ml-4' %>
+            </li>
+            <li>
+              <%= link_to "Sign_up", new_customer_registration_path, class: 'btn btn-primary btn-lg ml-4' %>
+            </li>
+            <li>
+              <%= link_to "Gest_log_in", public_guest_sign_in_path, method: :post, class: 'btn btn-primary btn-lg ml-4' %>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <%= render "public/searches/search" %>
       </div>
     </div>
   </nav>
